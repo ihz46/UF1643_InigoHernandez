@@ -1,0 +1,56 @@
+<div class="row mb-2">
+    <div class="col-md-4">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Busca libro por nombre o ISBN" [(ngModel)]="busqueda">
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"> <span class="fas fa-search"></span></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--cierre div row-->
+
+<div class="row">
+    <div class="col-md-4">
+        <h5>Libros disponibles</h5>
+        <ul class="list-group">
+            <li *ngFor="let l of libros | filtroLibro: busqueda"
+                class="list-group-item {{(l==libroSeleccionado)?'active':''}}" (click)="seleccionarLibro(l)">
+
+                <div class="nombreLibro"><b>{{l.title}}</b></div>
+                <div class="isbnLibro"><i>{{l.author}}</i></div>
+
+            </li>
+
+        </ul>
+    </div>
+    <!--SECCION LISTADO-->
+    <div class="col-md-8">
+        <div class="fichaLibro">
+            <div class="card">
+                <div class="card-body text-center text-justify">
+                    <h3 class="card-title">{{libroSeleccionado.title | uppercase}}</h3>
+                    <h5 class="card-title">{{libroSeleccionado.subtitle}}</h5>
+
+                    <ul class="list-group">
+                        <li class="list-group-item "><b>Autor:</b>{{libroSeleccionado.author}}</li>
+                        <li class="list-group-item "><b>Editorial:</b> {{libroSeleccionado.publisher}}</li>
+                        <li class="list-group-item "><b>Fecha de publicación:</b>{{libroSeleccionado.published}} </li>
+                        <li class="list-group-item "><b>Número de páginas:</b> {{libroSeleccionado.pages}}</li>
+                        <li class="list-group-item "><b>ISBN:</b> {{libroSeleccionado.isbn}}</li>
+                        <li class="list-group-item "><a href="{{libroSeleccionado.website}}"
+                                target="_blank">{{libroSeleccionado.website}}</a></li>
+                    </ul>
+                    <!--cierre listado-->
+
+                </div>
+                <!--cierre card-body-->
+            </div>
+            <!--cierre card-->
+        </div>
+        <!--cierre ficha libro-->
+    </div>
+    <!--cierre col-->
+</div>
+<!--cierre div row-->
