@@ -1,5 +1,6 @@
+<h2 class="display-2 text-center ">{{'libros angular' | uppercase}}</h2>
 <div class="row mb-2">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="input-group">
             <input class="form-control" type="text" placeholder="Busca libro por nombre o ISBN" [(ngModel)]="busqueda">
             <div class="input-group-append">
@@ -10,23 +11,30 @@
     </div>
 </div>
 <!--cierre div row-->
-
 <div class="row">
-    <div class="col-md-4">
-        <h5>Libros disponibles</h5>
-        <ul class="list-group">
+    <div class="col-md-5">
+        <h5 class="titulo">Libros disponibles</h5>
+    </div>
+
+</div>
+<!--cierre row-->
+<div class="row">
+
+    <div class="col-md-5 ">
+
+        <ul class="list-group listado">
             <li *ngFor="let l of libros | filtroLibro: busqueda"
                 class="list-group-item {{(l==libroSeleccionado)?'active':''}}" (click)="seleccionarLibro(l)">
 
-                <div class="nombreLibro"><b>{{l.title}}</b></div>
-                <div class="isbnLibro"><i>{{l.author}}</i></div>
+                <p><b>{{l.title}}</b></p>
+                <p class="isbnLibro">{{l.author}}</p>
 
             </li>
 
         </ul>
     </div>
     <!--SECCION LISTADO-->
-    <div class="col-md-8">
+    <div class="col-md-7">
         <div class="fichaLibro">
             <div class="card">
                 <div class="card-body text-center text-justify">
@@ -39,8 +47,9 @@
                         <li class="list-group-item "><b>Fecha de publicación:</b>{{libroSeleccionado.published}} </li>
                         <li class="list-group-item "><b>Número de páginas:</b> {{libroSeleccionado.pages}}</li>
                         <li class="list-group-item "><b>ISBN:</b> {{libroSeleccionado.isbn}}</li>
-                        <li class="list-group-item "><a href="{{libroSeleccionado.website}}"
-                                target="_blank">{{libroSeleccionado.website}}</a></li>
+                        <li class="list-group-item "><i class="fas fa-external-link-alt mr-2"></i><a
+                                href="{{libroSeleccionado.website}}" target="_blank">{{libroSeleccionado.website}}</a>
+                        </li>
                     </ul>
                     <!--cierre listado-->
 

@@ -6,7 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FiltroLibroPipe implements PipeTransform {
 
 
-  //Pasamos al filtro el array de libros y el campo a buscar
+  /**
+   * Filtro que permite buscar por título y por ISBN de un libro
+   * @param libros array con todos los libros
+   * @param busqueda string con la busqueda que realiza el usuario
+   */
   transform(libros: any, busqueda: string): any {
 
     console.trace('Entramos en el filtro');
